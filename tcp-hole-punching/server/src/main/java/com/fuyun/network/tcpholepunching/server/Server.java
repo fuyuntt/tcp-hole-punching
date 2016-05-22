@@ -20,9 +20,9 @@ public class Server {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         executorService.submit(new EchoAddr(7070));
         executorService.submit(new EchoAddr(7071));
+        executorService.shutdown();
         executorService.awaitTermination(1, TimeUnit.DAYS);
         System.out.println("所有的任务都退出了.");
-        executorService.shutdown();
     }
 
     private static class EchoAddr implements Runnable {
